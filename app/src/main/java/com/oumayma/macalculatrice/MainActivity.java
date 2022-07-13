@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-private Button b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bMoins,bPlus,Delete,bMultiplication,bDivision,bC,bCE,bPlusMoins,bPourcent,bEgale,bDot,bCarre,bRacine,binv;
-private TextView tvOperation;
+    private Button b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bMoins,bPlus,bMultiplication,bDivision,bC,bCE,bPlusMoins,bPourcent,bEgale,bDot,bCarre,bRacine,binv;
+    private TextView tvOperation;
     private EditText etResult;
+    private ImageButton Delete;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -42,7 +44,7 @@ private TextView tvOperation;
         bCarre=findViewById(R.id.bCarre);
         bPlusMoins=findViewById(R.id.bPlusMoins);
         bPourcent=findViewById(R.id.bPourcent);
-       // Delete=findViewById(R.id.delete);
+        Delete=findViewById(R.id.delete);
         tvOperation = findViewById(R.id.tvOperation);
         etResult = (EditText)findViewById(R.id.etResult);
         etResult.setEnabled(false);
@@ -51,66 +53,77 @@ private TextView tvOperation;
         b0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText("0");
+                etResult.setText(etResult.getText().toString()+"0");
             }
         });
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText("1");
+                etResult.setText(etResult.getText().toString()+"1");
             }
         });
+
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText("2");
+                etResult.setText(etResult.getText().toString()+"2");
             }
         });
+
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText("3");
+                etResult.setText(etResult.getText().toString()+"3");
             }
         });
+
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText("4");
+                etResult.setText(etResult.getText().toString()+"4");
             }
         });
+
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText("5");
+                etResult.setText(etResult.getText().toString()+"5");
             }
         });
+
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText("6");
+                etResult.setText(etResult.getText().toString()+"6");
             }
         });
+
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText("7");
+                etResult.setText(etResult.getText().toString()+"7");
             }
         });
+
         b8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText("8");
+                etResult.setText(etResult.getText().toString()+"8");
             }
         });
+
         b9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText("9");
+                etResult.setText(etResult.getText().toString()+"9");
             }
         });
+
         bDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(etResult.getText().toString().contains(".")) return;
                 etResult.setText(etResult.getText()+".");
             }
         });
@@ -179,7 +192,7 @@ private TextView tvOperation;
         bDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText(etResult.getText()+",");
+                etResult.setText(new StringBuilder().append(etResult.getText()).append(",").toString());
             }
         });
         bPlusMoins.setOnClickListener(new View.OnClickListener() {
@@ -210,8 +223,9 @@ private TextView tvOperation;
                 String val = etResult.getText().toString();
                 String replacedstr = val.replace('÷','/').replace('×','*');
                 double result = manip(replacedstr);
+                tvOperation.setText(String.format("%s %s = ", tvOperation.getText().toString(), etResult));
                 etResult.setText(String.valueOf(result));
-                tvOperation.setText(val);
+
             }
         });
       /*  Delete.setOnClickListener(new View.OnClickListener() {
@@ -248,8 +262,6 @@ private TextView tvOperation;
                 if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char)ch);
                 return x;
             }
-
-
 
             double parseExpression() {
                 double x = parseTerm();

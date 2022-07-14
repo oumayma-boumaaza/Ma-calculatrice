@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvOperation;
     private EditText etResult;
     private ImageButton Delete;
+    private boolean isNewnumber = true;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -53,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         b0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isNewnumber) {
+                   return;
+                }
                 etResult.setText(etResult.getText().toString()+"0");
             }
         });
@@ -60,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isNewnumber) {
+                    isNewnumber = false;
+                    etResult.setText("");
+                }
+
                 etResult.setText(etResult.getText().toString()+"1");
             }
         });
@@ -67,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isNewnumber) {
+                    isNewnumber = false;
+                    etResult.setText("");
+                }
                 etResult.setText(etResult.getText().toString()+"2");
             }
         });
@@ -74,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isNewnumber) {
+                    isNewnumber = false;
+                    etResult.setText("");
+                }
                 etResult.setText(etResult.getText().toString()+"3");
             }
         });
@@ -81,13 +98,21 @@ public class MainActivity extends AppCompatActivity {
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etResult.setText(etResult.getText().toString()+"4");
+                if(isNewnumber) {
+                    isNewnumber = false;
+                    etResult.setText("");
+                }
+                etResult.setText(String.format("%s4", etResult.getText().toString()));
             }
         });
 
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isNewnumber) {
+                    isNewnumber = false;
+                    etResult.setText("");
+                }
                 etResult.setText(etResult.getText().toString()+"5");
             }
         });
@@ -95,6 +120,10 @@ public class MainActivity extends AppCompatActivity {
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isNewnumber) {
+                    isNewnumber = false;
+                    etResult.setText("");
+                }
                 etResult.setText(etResult.getText().toString()+"6");
             }
         });
@@ -102,6 +131,10 @@ public class MainActivity extends AppCompatActivity {
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isNewnumber) {
+                    isNewnumber = false;
+                    etResult.setText("");
+                }
                 etResult.setText(etResult.getText().toString()+"7");
             }
         });
@@ -109,6 +142,10 @@ public class MainActivity extends AppCompatActivity {
         b8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isNewnumber) {
+                    isNewnumber = false;
+                    etResult.setText("");
+                }
                 etResult.setText(etResult.getText().toString()+"8");
             }
         });
@@ -116,6 +153,10 @@ public class MainActivity extends AppCompatActivity {
         b9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isNewnumber) {
+                    isNewnumber = false;
+                    etResult.setText("");
+                }
                 etResult.setText(etResult.getText().toString()+"9");
             }
         });
@@ -124,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(etResult.getText().toString().contains(".")) return;
-                etResult.setText(etResult.getText()+".");
+                etResult.setText(etResult.getText()+",");
             }
         });
 

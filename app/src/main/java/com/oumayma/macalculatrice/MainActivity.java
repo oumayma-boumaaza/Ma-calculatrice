@@ -269,14 +269,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-      /*  Delete.setOnClickListener(new View.OnClickListener() {
+        Delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String s = etResult.getText().toString();
                 s = s.substring(0, s.length() - 1);
                 etResult.setText(s);
             }
-        });*/
+        });
 
 
     }
